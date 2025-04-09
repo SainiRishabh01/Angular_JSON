@@ -1,29 +1,131 @@
-# AngularTailwindForm
+# 🧩 Angular JSON Forms Project — Technical Assignment
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.6.
+This project is a **technical assignment** built using **Angular 15**, **jsonforms.io**, and **Tailwind CSS**, designed to demonstrate dynamic form generation using JSON configurations, custom renderers, and responsive UI design.
 
-## Development server
+---
 
-To start a local development server, run:
+## 🚀 Objective
 
+The goal of this project is to showcase:
+- Dynamic UI generation using [jsonforms.io](https://jsonforms.io)
+- Integration of custom Angular renderers
+- Responsive and styled forms using Tailwind CSS
+- Real-time validations and interactivity within the form
+
+---
+
+## 📁 Project Structure
+
+src/ ├── app/ │ ├── components/ # Custom components and renderers │ ├── forms/ # JSON schemas and UI schemas │ ├── services/ # Data or utility services │ └── app.module.ts ├── assets/ │ └── ... ├── styles.css # Tailwind base styles └── ...
+
+yaml
+Copy
+Edit
+
+---
+
+## 🛠️ Setup Instructions
+
+### 1. Clone the repository
 ```bash
+git clone https://github.com/your-username/angular-jsonforms-project.git
+cd angular-jsonforms-project
+2. Install dependencies
+bash
+Copy
+Edit
+npm install
+3. Run the project
+bash
+Copy
+Edit
 ng serve
-```
+Visit http://localhost:4200 in your browser.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+🔧 Technologies Used
+Angular 15
 
-## Code scaffolding
+JSONForms (@jsonforms/angular)
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Tailwind CSS
 
-```bash
-ng generate component component-name
-```
+RxJS / TypeScript
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+📄 JSON Form Structure
+Each form is built from:
 
-```bash
-ng generate --help
+Schema: Defines the data structure
+
+UI Schema: Defines how the form should be rendered
+
+Example:
+schema.json
+
+json
+Copy
+Edit
+{
+  "type": "object",
+  "properties": {
+    "firstName": { "type": "string" },
+    "age": { "type": "number" }
+  },
+  "required": ["firstName"]
+}
+uischema.json
+
+json
+Copy
+Edit
+{
+  "type": "VerticalLayout",
+  "elements": [
+    {
+      "type": "Control",
+      "scope": "#/properties/firstName"
+    },
+    {
+      "type": "Control",
+      "scope": "#/properties/age"
+    }
+  ]
+}
+🎨 Features Implemented
+✅ Phase 1: Project Setup
+Angular 15 initialized
+
+Tailwind CSS configured
+
+Project structured into reusable modules and components
+
+✅ Phase 2: JSON Forms Integration
+Dynamic form generation using JSON schemas
+
+Two separate JSON configurations for different layouts
+
+✅ Phase 3: Custom Renderers
+Custom Angular component replacing a default input field
+
+Maintains consistent style and behavior with UI design
+
+✅ Phase 4: Responsive Design & Styling
+Tailwind used for layout and form styling
+
+Responsive design for mobile and desktop devices
+
+✅ Phase 5: Validations & Interactivity
+Validation rules enforced from JSON schema
+
+Interactive dropdown affecting other fields dynamically
+
+Real-time validation feedback with UX cues
+
+✅ Phase 6: Finalization
+Fully functional application
+
+No runtime errors
+
+Documentation and video demo included
 ```
 
 ## Building

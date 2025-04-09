@@ -1,12 +1,35 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  standalone: true,
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css'],
+  
 })
 export class AppComponent {
-  title = 'angular-tailwind-form';
+  form: FormGroup;
+
+  constructor(private fb: FormBuilder) {
+    this.form = this.fb.group({
+      fullName: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      gender: ['', Validators.required],
+      country: ['', Validators.required],
+      terms: [false, Validators.requiredTrue]
+
+    });
+  }
+
+  onSubmit() {
+    if (this.form.valid) {
+      console.log('✅ Submitted Data:', this.form.value);
+    } else {
+      console.log('❌ Form is invalid');
+    }
+  }
 }

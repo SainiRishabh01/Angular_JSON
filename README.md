@@ -1,161 +1,146 @@
-# 🧩 Angular JSON Forms Project — Technical Assignment
+# 🧩 Angular JSON Forms Project – Technical Assignment
 
-This project is a **technical assignment** built using **Angular 15**, **jsonforms.io**, and **Tailwind CSS**, designed to demonstrate dynamic form generation using JSON configurations, custom renderers, and responsive UI design.
+## 📌 Objective
 
----
+This project was built as a part of a technical assignment to evaluate the understanding of:
+- Angular (v15 preferred)
+- JSON-based dynamic forms using the [`jsonforms.io`](https://jsonforms.io) library
+- Custom Angular renderers
+- Tailwind CSS for responsive UI design and styling
 
-## 🚀 Objective
-
-The goal of this project is to showcase:
-- Dynamic UI generation using [jsonforms.io](https://jsonforms.io)
-- Integration of custom Angular renderers
-- Responsive and styled forms using Tailwind CSS
-- Real-time validations and interactivity within the form
+The goal was to build a dynamic form generator that renders UI from JSON schema/configurations, adheres to design guidelines, and includes customizations, responsiveness, and validations.
 
 ---
 
 ## 📁 Project Structure
 
-src/ ├── app/ │ ├── components/ # Custom components and renderers │ ├── forms/ # JSON schemas and UI schemas │ ├── services/ # Data or utility services │ └── app.module.ts ├── assets/ │ └── ... ├── styles.css # Tailwind base styles └── ...
-
-yaml
-Copy
-Edit
+angular-jsonforms-assignment/
+├── .angular/                      # Angular CLI cache/config
+├── .vscode/                       # VS Code settings
+├── node_modules/                  # Installed dependencies
+├── public/                        # Public assets (if used)
+├── src/
+│   ├── app/
+│   │   ├── form/                  # 🧩 Feature module for the dynamic form
+│   │   │   ├── form.component.ts          # Main logic for rendering the form
+│   │   │   ├── form.component.html        # Template using jsonforms renderer
+│   │   │   ├── form.component.css         # Component-specific Tailwind styling
+│   │   │   └── form.component.spec.ts     # Unit tests (optional)
+│   │   ├── app.component.ts       # Root app logic
+│   │   ├── app.component.html     # Root app template
+│   │   ├── app.component.css      # Root component styles
+│   │   ├── app.component.spec.ts  # Root component test
+│   │   ├── app.routes.ts          # App-level routing setup
+│   │   └── app.config.ts          # Custom configuration (e.g., json schema paths)
+│   ├── index.html                 # Main HTML entry
+│   ├── main.ts                    # App bootstrap logic
+│   └── styles.css                 # Global styles (includes Tailwind directives)
+├── .editorconfig                 # Editor formatting preferences
+├── .gitignore                    # Ignored files
+├── angular.json                  # Angular workspace config
+├── package.json                  # Project dependencies and scripts
+├── package-lock.json             # Dependency lock file
+├── postcss.config.json           # PostCSS config for Tailwind
+├── README.md                     # 📘 Project documentation
+├── tsconfig.app.json             # TS config for Angular app
+└── tsconfig.json                 # Base TypeScript config
 
 ---
 
-## 🛠️ Setup Instructions
+## 🚀 Getting Started
 
-### 1. Clone the repository
+### 1️⃣ Clone the Repository
+
 ```bash
-git clone https://github.com/your-username/angular-jsonforms-project.git
-cd angular-jsonforms-project
-2. Install dependencies
+git clone https://github.com/<your-username>/<repo-name>.git
+cd <repo-name>
+2️⃣ Install Dependencies
 bash
 Copy
 Edit
 npm install
-3. Run the project
+3️⃣ Run the App Locally
 bash
 Copy
 Edit
 ng serve
-Visit http://localhost:4200 in your browser.
+Navigate to http://localhost:4200/ in your browser.
 
-🔧 Technologies Used
-Angular 15
+🛠️ Technologies Used
+Tech	Description
+Angular 15	Framework for SPA development
+jsonforms.io	Dynamic form generation from JSON
+Tailwind CSS	Utility-first CSS framework
+TypeScript	Superset of JavaScript
+HTML/CSS	Markup and styling
 
-JSONForms (@jsonforms/angular)
+📐 JSON Schema & UI Schema
+The project uses two sample sets of schemas:
 
-Tailwind CSS
-
-RxJS / TypeScript
-
-📄 JSON Form Structure
-Each form is built from:
-
-Schema: Defines the data structure
-
-UI Schema: Defines how the form should be rendered
-
-Example:
-schema.json
-
+✅ Sample 1: Basic Personal Form
 json
 Copy
 Edit
+// schemas/schema-personal.json
 {
   "type": "object",
   "properties": {
     "firstName": { "type": "string" },
-    "age": { "type": "number" }
+    "age": { "type": "integer", "minimum": 0 },
+    "gender": { "type": "string", "enum": ["Male", "Female", "Other"] }
   },
-  "required": ["firstName"]
+  "required": ["firstName", "age"]
 }
-uischema.json
-
 json
 Copy
 Edit
+// schemas/ui-schema-personal.json
 {
   "type": "VerticalLayout",
   "elements": [
-    {
-      "type": "Control",
-      "scope": "#/properties/firstName"
-    },
-    {
-      "type": "Control",
-      "scope": "#/properties/age"
-    }
+    { "type": "Control", "scope": "#/properties/firstName" },
+    { "type": "Control", "scope": "#/properties/age" },
+    { "type": "Control", "scope": "#/properties/gender" }
   ]
 }
-🎨 Features Implemented
-✅ Phase 1: Project Setup
+✅ Sample 2: Address Form with Conditional Dropdown
+Includes a dynamic dropdown for country → updates states dynamically using Angular logic in a custom renderer.
+
+🎨 Custom Renderers
+A custom renderer was implemented for the gender field using a custom Angular component (gender-select.component.ts) styled with Tailwind. It replaces the default dropdown with a more accessible UI element.
+
+📱 Responsive UI & Tailwind Styling
+Tailwind classes were used to style all layouts
+
+Components are mobile-friendly and responsive
+
+UI follows consistent spacing, padding, and alignment
+
+✅ Form Validations
+Real-time validation feedback for required and min/max fields
+
+Error messages display inline
+
+One dropdown (country → states) affects another field dynamically
+
+🧪 Phased Implementation
+Phase 1: Project Setup
 Angular 15 initialized
 
-Tailwind CSS configured
+Tailwind and jsonforms.io configured
 
-Project structured into reusable modules and components
+Phase 2: Dynamic Forms with JSON
+Rendered forms dynamically using JSON schema and UI schema
 
-✅ Phase 2: JSON Forms Integration
-Dynamic form generation using JSON schemas
+Phase 3: Custom Renderers
+Replaced default dropdown with a custom-rendered select component
 
-Two separate JSON configurations for different layouts
+Phase 4: Styling & Responsiveness
+UI built using Tailwind, fully responsive across devices
 
-✅ Phase 3: Custom Renderers
-Custom Angular component replacing a default input field
+Phase 5: Validations & Interactions
+Added live field validation and conditional dropdown interaction
 
-Maintains consistent style and behavior with UI design
+Phase 6: Final Touches
+Code cleanup and documentation added
 
-✅ Phase 4: Responsive Design & Styling
-Tailwind used for layout and form styling
-
-Responsive design for mobile and desktop devices
-
-✅ Phase 5: Validations & Interactivity
-Validation rules enforced from JSON schema
-
-Interactive dropdown affecting other fields dynamically
-
-Real-time validation feedback with UX cues
-
-✅ Phase 6: Finalization
-Fully functional application
-
-No runtime errors
-
-Documentation and video demo included
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.

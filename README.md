@@ -14,36 +14,7 @@ The goal was to build a dynamic form generator that renders UI from JSON schema/
 
 ## 📁 Project Structure
 
-angular-jsonforms-assignment/
-├── .angular/                      # Angular CLI cache/config
-├── .vscode/                       # VS Code settings
-├── node_modules/                  # Installed dependencies
-├── public/                        # Public assets (if used)
-├── src/
-│   ├── app/
-│   │   ├── form/                  # 🧩 Feature module for the dynamic form
-│   │   │   ├── form.component.ts          # Main logic for rendering the form
-│   │   │   ├── form.component.html        # Template using jsonforms renderer
-│   │   │   ├── form.component.css         # Component-specific Tailwind styling
-│   │   │   └── form.component.spec.ts     # Unit tests (optional)
-│   │   ├── app.component.ts       # Root app logic
-│   │   ├── app.component.html     # Root app template
-│   │   ├── app.component.css      # Root component styles
-│   │   ├── app.component.spec.ts  # Root component test
-│   │   ├── app.routes.ts          # App-level routing setup
-│   │   └── app.config.ts          # Custom configuration (e.g., json schema paths)
-│   ├── index.html                 # Main HTML entry
-│   ├── main.ts                    # App bootstrap logic
-│   └── styles.css                 # Global styles (includes Tailwind directives)
-├── .editorconfig                 # Editor formatting preferences
-├── .gitignore                    # Ignored files
-├── angular.json                  # Angular workspace config
-├── package.json                  # Project dependencies and scripts
-├── package-lock.json             # Dependency lock file
-├── postcss.config.json           # PostCSS config for Tailwind
-├── README.md                     # 📘 Project documentation
-├── tsconfig.app.json             # TS config for Angular app
-└── tsconfig.json                 # Base TypeScript config
+![Form Screenshot](./assets/structure.png)
 
 ---
 
